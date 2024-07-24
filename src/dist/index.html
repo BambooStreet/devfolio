@@ -7,10 +7,50 @@
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="css/main.bundle.css">
   <script src="https://kit.fontawesome.com/4e5a72c756.js"></script>
+  <style>
+    .en { display: block; }
+    .jp { display: none; }
+    .language-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    #languageSelect {
+        padding: 5px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+    .language-description {
+        font-size: 18px;  /* 이 부분만 크기를 키웠습니다 */
+        color: #f0f0f0;
+    }
+</style>
 </head>
 
 <body>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    
+    <!-- 언어 드롭다운 -->
+    <div class="language-selector">
+      <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="jp">日本語</option>
+      </select>
+      <span class="language-description">You can change the language here!</span>
+  </div>
+  <!-- 드롭다운시 다른 설정해둔 다른 언어 사이트로 이동 --> 
+  <script>
+    const languageSelect = document.getElementById('languageSelect');
+    languageSelect.addEventListener('change', function() {
+        const language = this.value;
+        if (language === 'jp') {
+            window.location.href = 'https://bamboostreet.github.io/'; // 일본어 페이지 URL
+        } else {
+            window.location.href = 'index.html'; // 영어(기본) 페이지 URL
+        }
+    });
+  </script>
+
     <div class="navbar-brand">
       <div class="navbar-item is-hidden-desktop">
         <a href="https://github.com/BambooStreet" class="icon is-large has-text-light">
@@ -38,6 +78,8 @@
       </div>
     </div>
   </nav>
+
+  
 
   <section class="hero is-primary">
     <div class="hero-body">
@@ -151,7 +193,6 @@
               <li>Building a database to train a T5-based Retrival model.</li>
             </ul>
             <div class="tags">
-              <span class="tag">python</span>
             </div>
           </div>
         </div>
@@ -168,23 +209,65 @@
           <div class="tile">
             <div class="tile is-parent">
               <article class="tile is-child notification">
-                <p class="title">Project title</p>
+                <p class="title">SejongMate</p>
+                <p class="subtitle is-6">2023.03~2023.06</p>
                 <figure class="image is-3by2">
-                  <img class="modal-trigger" data-target="project-1-modal" src="img/project-1-cover.png">
+                  <img class="modal-trigger" data-target="project-1-modal" src="img/sejongmate-logo.png">
                 </figure>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child notification">
-                <p class="title">Project title</p>
+                <p class="title">HonestLLM</p>
+                <p class="subtitle is-6">2023.06~2023.12</p>
                 <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-2-modal" src="img/project-2-cover.png">
+                  <img class="modal-trigger" data-target="project-2-modal" src="img/HonestLLM-logo.png">
                 </figure>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child notification">
-                <p class="title">Project title</p>
+                <p class="title">Foreign AICC</p>
+                <p class="subtitle is-6">2024.06~</p>
+                <figure class="image is-4by3">
+                  <img class="modal-trigger" data-target="project-3-modal" src="img/HelloWorld-logo.png">
+                </figure>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Extra-Curricular Activities</h1>
+      <hr />
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-12">
+          <div class="tile">
+            <div class="tile is-parent">
+              <article class="tile is-child notification">
+                <p class="title">터벌림</p>
+                <p class="subtitle is-6">2019.03~2024.03</p>
+                <p class="subtitle is-6">Performing traditional Korean instruments</p>
+                <figure class="image is-3by2">
+                  <img class="modal-trigger" data-target="project-1-modal" src="img/TBL-1.jpg">
+                </figure>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification">
+                <p class="title"></p>
+                <figure class="image is-4by3">
+                  <img class="modal-trigger" data-target="project-2-modal" src="img/HonestLLM-logo.png">
+                </figure>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification">
+                <p class="title">Foreign AICC</p>
                 <figure class="image is-4by3">
                   <img class="modal-trigger" data-target="project-3-modal" src="img/project-3-cover.png">
                 </figure>
@@ -233,34 +316,26 @@
       <nav class="level">
         <div class="level-item has-text-centered">
           <div>
-            <a href="https://github.com/mmacneil" class="icon is-large">
+            <a href="https://github.com/BambooStreet" class="icon is-large">
               <i class="fab fa-2x fa-github"></i>
             </a>
-            <p class="heading"><a href="https://github.com/mmacneil">github.com/mmacneil</a></p>
+            <p class="heading"><a href="https://github.com/BambooStreet">github.com/BambooStreet</a></p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <a href="https://fullstackmark.com" class="icon is-large">
+            <a href="https://bamboostreet.github.io/" class="icon is-large">
               <i class="fas fa-2x fa-globe"></i>
             </a>
-            <p class="heading"><a href="https://fullstackmark.com">fullstackmark.com</a></p>
+            <p class="heading"><a href="https://bamboostreet.github.io/">bamboostreet.github.io</a></p>
           </div>
         </div>
         <div class="level-item has-text-centered">
           <div>
-            <a href="mailto:markmacneil@gmail.com" class="icon is-large">
+            <a href="mailto:ohmyhong1234@gmail.com" class="icon is-large">
               <i class="fas fa-2x fa-envelope"></i>
             </a>
-            <p class="heading"><a href="mailto:markmacneil@gmail.com">markmacneil@gmail.com</a></p>
-          </div>
-        </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <a href="https://www.linkedin.com/in/markmacneilhfx" class="icon is-large">
-              <i class="fab fa-2x fa-linkedin-in"></i>
-            </a>
-            <p class="heading"><a href="https://www.linkedin.com/in/markmacneilhfx">linkedin</a></p>
+            <p class="heading"><a href="mailto:ohmyhong1234@gmail.com">ohmyhong1234@gmail.com</a></p>
           </div>
         </div>
       </nav>
