@@ -1,0 +1,48 @@
+name: Deploy static content to Pages
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Add hash to asset filenames
+        run: |
+          find . -type f \( -name "*.js" -o -name "*.css" \) -print0 | while IFS= read -r -d '' file; do
+            checksum=$(md5sum "$file" | awk '{ print $1 }')
+            dir=$(dirname "$file")
+            filename=$(basename "$file")
+            extension="${filename##*.}"
+            newname="${filename%.*}.${checksum:0:8}.${extension}"
+            mv "$file" "${dir}/${newname}"
+            sed -i "s|${filename}|${newname}|g" $(find . -type f -name "*.html")
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
